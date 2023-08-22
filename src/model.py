@@ -1,9 +1,9 @@
 
 
 from utils import create_class
+import torch.nn as nn
 
-
-class KDTI(nn.Module):
+class kDTI(nn.Module):
     def __init__(self,  **config):
         super(KDTI, self).__init__()
         drug_module = config["DRUG"]["MODULE"]
