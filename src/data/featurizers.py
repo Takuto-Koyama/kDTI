@@ -76,3 +76,26 @@ class SimpleTorchGeometricFeaturizer(SimpleFeaturizer):
     def _featurize_bond(self, bond):
         return []  # This should be overridden in subclasses
 
+
+class GraphFeaturizer:
+    def __init__(self, inputs, outputs, should_cache=False, rewrite=True):
+        self.inputs = inputs
+        self.outputs = outputs
+        self.should_cache = should_cache
+        self.rewrite = rewrite
+        self.cache = {}
+    
+    def featurize(self):
+        pass
+    
+class Tokenizer:
+    def __init__(self, inputs, outputs, should_cache=False, rewrite=True):
+        self.inputs = inputs
+        self.outputs = outputs
+        self.should_cache = should_cache
+        self.rewrite = rewrite
+        self.cache = {}
+    
+    def tokenize(self):
+        pass
+    

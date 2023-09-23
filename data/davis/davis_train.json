@@ -1,0 +1,5 @@
+{
+    "input_csv": "data/davis/davis.csv",
+    "output_path":"output_dir/davis",
+    "mode": "train"
+}

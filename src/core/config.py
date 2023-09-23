@@ -1,25 +1,29 @@
-
-from typing import Literal, Optional, List, Dict, Any, DefaultDict
-import torch 
-
+import json 
 
 class Config:
-    
-    enabled_gpus: List[int]
-    output_path: str
-    
-    
-    def get_device(self) -> torch.device:
-        device_id = self.enabled_gpus[0] if len(self.enabled_gpus) == 1 else 0
-        device_name = "cuda:" + str(device_id) if torch.cuda.is_available() and self.use_cuda else "cpu"
+    def __init__(self, json_file_path):
         
-        return torch.device(device_name)
+        self._set_default()
+        
+        with open(json_file_path, "r") as f:
+            self.config = json.load(f)
+        
+        self._set_config()
+        self._output_config()
     
-    def update_config(self, cfg):
-        for k, v in cfg.items():
-            if hasattr(self, k):
-                setattr(self, k, v)
-            else:
-                raise KeyError(f"Invalid key {k} in config file")
+    def _set_default(self):
+        self.input_csv = "../data/sample.csv"
+        self.output_dir = "../data/"
+        self.mode = "train"
+        
+                    
+    def _set_config(self):
+        for key, value in self.config.items():
+            setattr(self, key, value)
     
+    def _output_config(self):
+        print("======== Configurations ========")
+        for key, value in self.config.items():
+            print("{}: {}".format(key, value))
+        print("================================")
     
