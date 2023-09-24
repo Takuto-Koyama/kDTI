@@ -2,7 +2,7 @@ import pandas as pd
 
 import torch
 from torch_geometric.data import Dataset, Data
-from featurizers import *
+from src.data.featurizers import *
 
 class DTIDataset(Dataset):
     def __init__(self, config, list_ids, df):

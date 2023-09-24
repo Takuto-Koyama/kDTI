@@ -1,5 +1,5 @@
 #install dependencies
-conda install -c conda-forge rdkit python=3.10 matplotlib scikit-learn numpy pandas seaborn jupyter
+conda install -c conda-forge rdkit python=3.10 matplotlib scikit-learn numpy pandas seaborn jupyter -y
 ipython kernel install --user --name=kdti
 
 # Pytorch
